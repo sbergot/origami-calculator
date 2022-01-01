@@ -41,11 +41,11 @@ function MasuBox() {
                 "\\(largeur\\_feuille = \\frac{largeur\\_boîte \\times 4}{\\sqrt{2}}\\)"
               }
             </MathJax>
-            <span className="ml-2">= {formatResult(sheetWidth)}</span>
+            <span className="ml-2">=&nbsp;{formatResult(sheetWidth)}</span>
             <MathJax style={{ display: "inline-block" }} className="mt-2">
               {"\\(hauteur\\_boîte = \\frac{largeur\\_boîte}{2}\\)"}
             </MathJax>
-            <span className="ml-2">= {formatResult(boxWidth / 2)}</span>
+            <span className="ml-2">=&nbsp;{formatResult(boxWidth / 2)}</span>
           </div>
         </div>
         <div>
@@ -77,7 +77,7 @@ function Divisor1() {
             <MathJax style={{ display: "inline-block" }}>
               {"\\(largeur\\_feuille = largeur\\_diviseur \\times 3\\)"}
             </MathJax>
-            <span className="ml-2">= {formatResult(sheetWidth)}</span>
+            <span className="ml-2">=&nbsp;{formatResult(sheetWidth)}</span>
           </div>
         </div>
         <div>
@@ -111,7 +111,7 @@ function Divisor2() {
                 "\\(largeur\\_feuille = \\frac{largeur\\_boîte \\times 4}{\\sqrt{2}}\\)"
               }
             </MathJax>
-            <span className="ml-2">= {formatResult(sheetWidth)}</span>
+            <span className="ml-2">=&nbsp;{formatResult(sheetWidth)}</span>
           </div>
         </div>
         <div>

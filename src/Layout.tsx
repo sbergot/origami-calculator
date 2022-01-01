@@ -4,7 +4,7 @@ import { Children } from "./UITypes";
 
 export function Container({ children }: Children) {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto p-1">
       <h1 className="font-bold text-3xl">
         <a href="/">origami calculator</a>
       </h1>
@@ -28,10 +28,10 @@ export function MathJaxContainer({ children }: Children) {
 
 export function YoutubeEmbed({ embedId }: { embedId: string }) {
   return (
-    <div className="video-responsive">
+    <div className="video-responsive max-w-full w-192">
       <iframe
-        width="520"
-        height="293"
+        width="560"
+        height="315"
         src={`https://www.youtube.com/embed/${embedId}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
