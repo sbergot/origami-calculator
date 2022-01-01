@@ -5,9 +5,18 @@ import { Children } from "./UITypes";
 export function Container({ children }: Children) {
   return (
     <div className="max-w-4xl mx-auto p-1">
-      <h1 className="font-bold text-3xl">
-        <a href="/">origami calculator</a>
-      </h1>
+      <div className="flex flex-wrap items-end justify-center mx-auto mb-8">
+        <a href="/" className="block max-w-full">
+          <img
+            src="/title.png"
+            alt="Les ludistes origamistes"
+            className="max-w-md h-auto"
+          />
+        </a>
+        <a href="https://www.facebook.com/groups/406940570021633/permalink/844694166246269">
+          <img src="/facebook.png" className="w-8" alt="facebook" />
+        </a>
+      </div>
       {children}
     </div>
   );

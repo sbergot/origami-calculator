@@ -23,7 +23,7 @@ function MasuBox() {
   const sheetWidth = (boxWidth / Math.sqrt(2)) * 4;
   return (
     <>
-      <h2 className="text-lg">Boîte Masu</h2>
+      <h2 className="text-lg font-bold">Boîte Masu</h2>
       <div className="fluid-container">
         <div>
           <div>
@@ -59,7 +59,7 @@ function Divisor1() {
   const sheetWidth = boxWidth * 3;
   return (
     <div className="mt-4">
-      <h2 className="text-lg">Diviseur en +</h2>
+      <h2 className="text-lg font-bold">Diviseur en +</h2>
       <div className="fluid-container">
         <div>
           <div>
@@ -89,7 +89,7 @@ function Divisor2() {
   const sheetWidth = boxWidth * (4 / Math.sqrt(2));
   return (
     <div className="mt-4">
-      <h2 className="text-lg">Diviseur en X</h2>
+      <h2 className="text-lg font-bold">Diviseur en X</h2>
       <div className="fluid-container">
         <div>
           <div>
