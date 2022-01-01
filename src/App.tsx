@@ -4,7 +4,7 @@ export default function App() {
   return (
     <Container>
       <div className="mt-4">
-        <a href="masu/">Boîte Masu & diviseurs</a>
+        <a className="underline text-orange-600 visited:text-orange-800" href="masu/">Boîte Masu & diviseurs</a>
       </div>
     </Container>
   );
