@@ -48,9 +48,7 @@ function MasuBox() {
             <span className="ml-2">=&nbsp;{formatResult(boxWidth / 2)}</span>
           </div>
         </div>
-        <div>
-          <YoutubeEmbed embedId="V2q5CyjfEKs" />
-        </div>
+        <YoutubeEmbed embedId="V2q5CyjfEKs" />
       </div>
     </>
   );
@@ -80,9 +78,7 @@ function Divisor1() {
             <span className="ml-2">=&nbsp;{formatResult(sheetWidth)}</span>
           </div>
         </div>
-        <div>
-          <YoutubeEmbed embedId="8r0MMfT0b2I" />
-        </div>
+        <YoutubeEmbed embedId="8r0MMfT0b2I" />
       </div>
     </div>
   );
@@ -114,9 +110,7 @@ function Divisor2() {
             <span className="ml-2">=&nbsp;{formatResult(sheetWidth)}</span>
           </div>
         </div>
-        <div>
-          <YoutubeEmbed embedId="TkEIyBQ1xic" />
-        </div>
+        <YoutubeEmbed embedId="TkEIyBQ1xic" />
       </div>
     </div>
   );

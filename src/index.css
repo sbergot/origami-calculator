@@ -13,12 +13,13 @@
   padding-bottom: 56.25%;
   position: relative;
   height: 0;
+  width: 100%;
 }
 
 .video-responsive iframe {
   left: 0;
   top: 0;
   height: 100%;
-  width: calc(100% - 0.25rem);
+  width: 100%;
   position: absolute;
 }

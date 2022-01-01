@@ -28,15 +28,17 @@ export function MathJaxContainer({ children }: Children) {
 
 export function YoutubeEmbed({ embedId }: { embedId: string }) {
   return (
-    <div className="video-responsive max-w-full w-128">
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${embedId}`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+    <div className="w-full max-w-lg">
+      <div className="video-responsive">
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${embedId}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
   );
 }
