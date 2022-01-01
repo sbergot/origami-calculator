@@ -13,7 +13,6 @@ export function Container({ children }: Children) {
           <img
             src={titleUrl}
             alt="Les ludistes origamistes"
-            className="max-w-md h-auto"
           />
         </a>
         <a href="https://www.facebook.com/groups/406940570021633/permalink/844694166246269">
