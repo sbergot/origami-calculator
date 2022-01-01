@@ -2,19 +2,22 @@ import { MathJaxContext } from "better-react-mathjax";
 import { useState } from "react";
 import { Children } from "./UITypes";
 
+import titleUrl from "../title.png";
+import facebookUrl from "../facebook.png";
+
 export function Container({ children }: Children) {
   return (
     <div className="max-w-4xl mx-auto p-1">
       <div className="flex flex-wrap items-end justify-center mx-auto mb-8">
         <a href="/" className="block max-w-full">
           <img
-            src="/title.png"
+            src={titleUrl}
             alt="Les ludistes origamistes"
             className="max-w-md h-auto"
           />
         </a>
         <a href="https://www.facebook.com/groups/406940570021633/permalink/844694166246269">
-          <img src="/facebook.png" className="w-8" alt="facebook" />
+          <img src={facebookUrl} className="w-8" alt="facebook" />
         </a>
       </div>
       {children}
