@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ["./root/src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       gridTemplateColumns: {

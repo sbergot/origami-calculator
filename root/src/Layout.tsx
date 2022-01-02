@@ -39,7 +39,7 @@ export function MathJaxContainer({ children }: Children) {
 
 export function YoutubeEmbed({ embedId }: { embedId: string }) {
   return (
-    <div className="w-full max-w-lg">
+    <div className="w-full max-w-md">
       <div className="video-responsive">
         <iframe
           width="560"
