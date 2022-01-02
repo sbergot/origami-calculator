@@ -134,7 +134,7 @@ function BaggiCover({
         <MathJax>
           {"\\(\\small{hauteur\\_couvercle = largeur\\_couvercle}\\)"}
         </MathJax>
-        <span>=&nbsp;{formatResult(boxWidth)}</span>
+        <span>=&nbsp;{formatResult(coverWith)}</span>
       </div>
     </div>
   );
