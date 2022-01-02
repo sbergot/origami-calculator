@@ -15,7 +15,7 @@ export function Container({ children }: Children) {
             alt="Les ludistes origamistes"
           />
         </a>
-        <a href="https://www.facebook.com/groups/406940570021633/permalink/844694166246269">
+        <a href="https://www.facebook.com/groups/406940570021633">
           <img src={facebookUrl} className="w-8" alt="facebook" />
         </a>
       </div>
