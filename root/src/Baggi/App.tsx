@@ -64,8 +64,10 @@ function BaggiBox() {
           </div>
         </div>
         <YoutubeEmbed embedId="ZdtQVv-AxR0" />
-        <img src={baggiUrl} className="max-w-sm" />
-        <div className="max-w-sm">
+        <div className="w-full max-w-sm">
+          <img src={baggiUrl} />
+        </div>
+        <div className="w-full max-w-sm">
           <img src={baggiLegendUrl} />
         </div>
       </div>
