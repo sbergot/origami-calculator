@@ -66,24 +66,24 @@ function BaggiBox({
           onChange={(e) => setLength(parseInt(e.currentTarget.value))}
         />
       </div>
-      <div className="mt-4 grid grid-cols-2fc">
-        <MathJax style={{ display: "inline-block" }}>
+      <div className="mt-4 grid grid-cols-2fc items-end gap-2">
+        <MathJax>
           {"\\(longueur\\_feuille = largeur\\_boîte \\times 4\\)"}
         </MathJax>
-        <span className="ml-2">=&nbsp;{formatResult(sheetLength)}</span>
-        <div className="mt-1">
-          <MathJax style={{ display: "inline-block" }}>
+        <span>=&nbsp;{formatResult(sheetLength)}</span>
+        <div>
+          <MathJax>
             {"\\(largeur\\_feuille = \\)"}
           </MathJax>
-          <MathJax style={{ display: "inline-block" }}>
+          <MathJax>
             {"\\(largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
           </MathJax>
         </div>
-        <span className="ml-2 self-end">=&nbsp;{formatResult(sheetWidth)}</span>
-        <MathJax style={{ display: "inline-block" }} className="mt-2">
+        <span>=&nbsp;{formatResult(sheetWidth)}</span>
+        <MathJax>
           {"\\(hauteur\\_boîte = largeur\\_boîte\\)"}
         </MathJax>
-        <span className="ml-2">=&nbsp;{formatResult(boxWidth)}</span>
+        <span>=&nbsp;{formatResult(boxWidth)}</span>
       </div>
     </div>
   );
@@ -123,27 +123,18 @@ function BaggiCover({
           onChange={(e) => setLengthMargin(parseInt(e.currentTarget.value))}
         />
       </div>
-      <div className="mt-4 grid grid-cols-2fc">
-        <MathJax style={{ display: "inline-block" }}>
-          {"\\(longueur\\_feuille = largeur\\_couvercle \\times 4\\)"}
-        </MathJax>
-        <span className="ml-2">=&nbsp;{formatResult(sheetLength)}</span>
-        <div className="mt-1">
-          <MathJax>
-            {"\\(largeur\\_feuille = \\)"}
-          </MathJax>
-          <MathJax>
-            {"\\(largeur\\_couvercle \\times 2\\)"}
-          </MathJax>
-          <MathJax>
-            {"\\(+ longueur\\_couvercle\\)"}
-          </MathJax>
+      <div className="mt-4 grid grid-cols-2fc items-end gap-2">
+          <MathJax>{"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}</MathJax>
+        <span>=&nbsp;{formatResult(sheetLength)}</span>
+        <div>
+          <MathJax>{"\\(\\small{largeur\\_feuille = }\\)"}</MathJax>
+          <MathJax>{"\\(\\small{largeur\\_couvercle \\times 2 + longueur\\_couvercle}\\)"}</MathJax>
         </div>
-        <span className="ml-2 self-end">=&nbsp;{formatResult(sheetWidth)}</span>
-        <MathJax style={{ display: "inline-block" }} className="mt-2">
-          {"\\(hauteur\\_couvercle = largeur\\_couvercle\\)"}
+        <span>=&nbsp;{formatResult(sheetWidth)}</span>
+        <MathJax>
+          {"\\(\\small{hauteur\\_couvercle = largeur\\_couvercle}\\)"}
         </MathJax>
-        <span className="ml-2">=&nbsp;{formatResult(boxWidth)}</span>
+        <span>=&nbsp;{formatResult(boxWidth)}</span>
       </div>
     </div>
   );
