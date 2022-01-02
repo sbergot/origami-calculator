@@ -73,10 +73,10 @@ function BaggiBox({
         <span className="ml-2">=&nbsp;{formatResult(sheetLength)}</span>
         <div className="mt-1">
           <MathJax style={{ display: "inline-block" }}>
-            {"\\(largeur\\_feuille\\)"}
+            {"\\(largeur\\_feuille = \\)"}
           </MathJax>
           <MathJax style={{ display: "inline-block" }}>
-            {"\\(= largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
+            {"\\(largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
           </MathJax>
         </div>
         <span className="ml-2 self-end">=&nbsp;{formatResult(sheetWidth)}</span>
@@ -129,11 +129,14 @@ function BaggiCover({
         </MathJax>
         <span className="ml-2">=&nbsp;{formatResult(sheetLength)}</span>
         <div className="mt-1">
-          <MathJax style={{ display: "inline-block" }}>
-            {"\\(largeur\\_feuille\\)"}
+          <MathJax>
+            {"\\(largeur\\_feuille = \\)"}
           </MathJax>
-          <MathJax style={{ display: "inline-block" }}>
-            {"\\(= largeur\\_couvercle \\times 2 + longueur\\_couvercle\\)"}
+          <MathJax>
+            {"\\(largeur\\_couvercle \\times 2\\)"}
+          </MathJax>
+          <MathJax>
+            {"\\(+ longueur\\_couvercle\\)"}
           </MathJax>
         </div>
         <span className="ml-2 self-end">=&nbsp;{formatResult(sheetWidth)}</span>
