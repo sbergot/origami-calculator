@@ -24,7 +24,7 @@ export default function App() {
         <div className="w-full max-w-sm">
           <img src={baggiLegendUrl} />
         </div>
-        <YoutubeEmbed embedId="ZdtQVv-AxR0" />
+        <YoutubeEmbed embedId="ZdtQVv-AxR0"  className="max-w-4xl" />
       </div>
     </MathJaxContainer>
   );
