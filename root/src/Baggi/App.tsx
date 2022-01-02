@@ -48,17 +48,20 @@ function BaggiBox() {
           </div>
           <div className="mt-4 grid grid-cols-2fc">
             <MathJax style={{ display: "inline-block" }}>
-              {"\\(\\small{longueur\\_feuille = largeur\\_boîte \\times 4} \\)"}
+              {"\\(longueur\\_feuille = largeur\\_boîte \\times 4\\)"}
             </MathJax>
             <span className="ml-2">=&nbsp;{formatResult(sheetLength)}</span>
-            <MathJax style={{ display: "inline-block" }}>
-              {
-                "\\(\\small{largeur\\_feuille = largeur\\_boîte \\times 2 + longueur\\_boîte}\\)"
-              }
-            </MathJax>
-            <span className="ml-2">=&nbsp;{formatResult(sheetWidth)}</span>
+            <div className="mt-1">
+              <MathJax style={{ display: "inline-block" }}>
+                {"\\(largeur\\_feuille\\)"}
+              </MathJax>
+              <MathJax style={{ display: "inline-block" }}>
+                {"\\(= largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
+              </MathJax>
+            </div>
+            <span className="ml-2 self-end">=&nbsp;{formatResult(sheetWidth)}</span>
             <MathJax style={{ display: "inline-block" }} className="mt-2">
-              {"\\(\\small{hauteur\\_boîte = largeur\\_boîte}\\)"}
+              {"\\(hauteur\\_boîte = largeur\\_boîte\\)"}
             </MathJax>
             <span className="ml-2">=&nbsp;{formatResult(boxWidth)}</span>
           </div>
