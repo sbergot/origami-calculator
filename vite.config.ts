@@ -12,6 +12,7 @@ export default defineConfig({
         main: resolve(__dirname, 'root/index.html'),
         masu: resolve(__dirname, 'root/masu/index.html'),
         baggi: resolve(__dirname, 'root/baggi/index.html'),
+        modamasu: resolve(__dirname, 'root/moda-masu/index.html'),
       }
     }
   }
