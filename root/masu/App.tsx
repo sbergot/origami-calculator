@@ -1,6 +1,6 @@
 import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
-import { MathJaxContainer, YoutubeEmbed } from "../Layout";
+import { MathJaxContainer, YoutubeEmbed } from "../Shared/Layout";
 
 export default function App() {
   return (

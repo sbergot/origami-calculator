@@ -2,8 +2,8 @@ import { MathJaxContext } from "better-react-mathjax";
 import { useState } from "react";
 import { Children } from "./UITypes";
 
-import titleUrl from "../title.png";
-import facebookUrl from "../facebook.png";
+import titleUrl from "./title.png";
+import facebookUrl from "./facebook.png";
 
 export function Container({ children }: Children) {
   return (

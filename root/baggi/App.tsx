@@ -1,8 +1,8 @@
 import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
-import { MathJaxContainer, YoutubeEmbed } from "../Layout";
-import baggiUrl from "../../baggi.svg";
-import baggiLegendUrl from "../../baggi_legend.svg";
+import { MathJaxContainer, YoutubeEmbed } from "../Shared/Layout";
+import baggiUrl from "./baggi.svg";
+import baggiLegendUrl from "./baggi_legend.svg";
 
 const dummy = () => useState<number>(0);
 type UseState = ReturnType<typeof dummy>;
