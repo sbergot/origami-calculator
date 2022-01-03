@@ -13,6 +13,7 @@ export default defineConfig({
         masu: resolve(__dirname, 'root/masu/index.html'),
         baggi: resolve(__dirname, 'root/baggi/index.html'),
         modamasu: resolve(__dirname, 'root/moda-masu/index.html'),
+        corolle: resolve(__dirname, 'root/corolle/index.html'),
       }
     }
   }
