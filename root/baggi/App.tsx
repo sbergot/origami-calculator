@@ -1,11 +1,9 @@
 import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
-import { MathJaxContainer, YoutubeEmbed } from "../Shared/Layout";
+import { MathJaxContainer, SizeInput, YoutubeEmbed } from "../Shared/Layout";
+import { UseState } from "../Shared/UITypes";
 import baggiUrl from "./baggi.svg";
 import baggiLegendUrl from "./baggi_legend.svg";
-
-const dummy = () => useState<number>(0);
-type UseState = ReturnType<typeof dummy>;
 
 export default function App() {
   const [boxWidth, setWidth] = useState(41);
@@ -24,7 +22,7 @@ export default function App() {
         <div className="w-full max-w-sm">
           <img src={baggiLegendUrl} />
         </div>
-        <YoutubeEmbed embedId="ZdtQVv-AxR0"  className="max-w-4xl" />
+        <YoutubeEmbed embedId="ZdtQVv-AxR0" className="max-w-4xl" />
       </div>
     </MathJaxContainer>
   );
@@ -41,48 +39,28 @@ function BaggiBox({
   widthState: UseState;
   lengthState: UseState;
 }) {
-  const [boxWidth, setWidth] = widthState;
-  const [boxLength, setLength] = lengthState;
+  const [boxWidth] = widthState;
+  const [boxLength] = lengthState;
   const sheetLength = boxWidth * 4;
   const sheetWidth = boxWidth * 2 + boxLength;
   return (
     <div>
       <h2 className="text-lg font-bold">Boîte Baggi</h2>
-      <div>
-        <p>Largeur de la boîte</p>
-        <input
-          type="number"
-          className="border px-2"
-          value={boxWidth}
-          onChange={(e) => setWidth(parseInt(e.currentTarget.value))}
-        />
-      </div>
-      <div>
-        <p>Longueur de la boîte</p>
-        <input
-          type="number"
-          className="border px-2"
-          value={boxLength}
-          onChange={(e) => setLength(parseInt(e.currentTarget.value))}
-        />
-      </div>
+      <SizeInput title="Largeur de la boîte" state={widthState} />
+      <SizeInput title="Longueur de la boîte" state={lengthState} />
       <div className="mt-4 grid grid-cols-2fc items-end gap-2">
         <MathJax>
           {"\\(longueur\\_feuille = largeur\\_boîte \\times 4\\)"}
         </MathJax>
         <span>=&nbsp;{formatResult(sheetLength)}</span>
         <div>
-          <MathJax>
-            {"\\(largeur\\_feuille = \\)"}
-          </MathJax>
+          <MathJax>{"\\(largeur\\_feuille = \\)"}</MathJax>
           <MathJax>
             {"\\(largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
           </MathJax>
         </div>
         <span>=&nbsp;{formatResult(sheetWidth)}</span>
-        <MathJax>
-          {"\\(hauteur\\_boîte = largeur\\_boîte\\)"}
-        </MathJax>
+        <MathJax>{"\\(hauteur\\_boîte = largeur\\_boîte\\)"}</MathJax>
         <span>=&nbsp;{formatResult(boxWidth)}</span>
       </div>
     </div>
@@ -105,30 +83,26 @@ function BaggiCover({
   return (
     <div>
       <h2 className="text-lg font-bold">Couvercle Baggi</h2>
-      <div>
-        <p>Marge couvercle en largeur</p>
-        <input
-          type="number"
-          className="border px-2"
-          value={coverWidthMargin}
-          onChange={(e) => setWidthMargin(parseInt(e.currentTarget.value))}
-        />
-      </div>
-      <div>
-        <p>Marge couvercle en longueur</p>
-        <input
-          type="number"
-          className="border px-2"
-          value={coverLengthMargin}
-          onChange={(e) => setLengthMargin(parseInt(e.currentTarget.value))}
-        />
-      </div>
+      <SizeInput
+        title="Marge couvercle en largeur"
+        state={[coverWidthMargin, setWidthMargin]}
+      />
+      <SizeInput
+        title="Marge couvercle en longueur"
+        state={[coverLengthMargin, setLengthMargin]}
+      />
       <div className="mt-4 grid grid-cols-2fc items-end gap-2">
-          <MathJax>{"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}</MathJax>
+        <MathJax>
+          {"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}
+        </MathJax>
         <span>=&nbsp;{formatResult(sheetLength)}</span>
         <div>
           <MathJax>{"\\(\\small{largeur\\_feuille = }\\)"}</MathJax>
-          <MathJax>{"\\(\\small{largeur\\_couvercle \\times 2 + longueur\\_couvercle}\\)"}</MathJax>
+          <MathJax>
+            {
+              "\\(\\small{largeur\\_couvercle \\times 2 + longueur\\_couvercle}\\)"
+            }
+          </MathJax>
         </div>
         <span>=&nbsp;{formatResult(sheetWidth)}</span>
         <MathJax>

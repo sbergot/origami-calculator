@@ -1,6 +1,6 @@
 import { MathJaxContext } from "better-react-mathjax";
 import { useState } from "react";
-import { Children } from "./UITypes";
+import { Children, UseState } from "./UITypes";
 
 import titleUrl from "./title.png";
 import facebookUrl from "./facebook.png";
@@ -10,10 +10,7 @@ export function Container({ children }: Children) {
     <div className="max-w-4xl mx-auto p-1">
       <div className="flex flex-wrap items-end justify-center mx-auto mb-8">
         <a href="/" className="block max-w-full">
-          <img
-            src={titleUrl}
-            alt="Les ludistes origamistes"
-          />
+          <img src={titleUrl} alt="Les ludistes origamistes" />
         </a>
         <a href="https://www.facebook.com/groups/406940570021633">
           <img src={facebookUrl} className="w-8" alt="facebook" />
@@ -37,7 +34,13 @@ export function MathJaxContainer({ children }: Children) {
   );
 }
 
-export function YoutubeEmbed({ embedId, className }: { embedId: string; className?: string }) {
+export function YoutubeEmbed({
+  embedId,
+  className,
+}: {
+  embedId: string;
+  className?: string;
+}) {
   return (
     <div className={`w-full ${className}`}>
       <div className="video-responsive">
@@ -50,6 +53,26 @@ export function YoutubeEmbed({ embedId, className }: { embedId: string; classNam
           allowFullScreen
         ></iframe>
       </div>
+    </div>
+  );
+}
+
+export function SizeInput({
+  title,
+  state: [value, setter],
+}: {
+  title: string;
+  state: UseState;
+}) {
+  return (
+    <div>
+      <p>{title}</p>
+      <input
+        type="number"
+        className="border px-2"
+        value={value}
+        onChange={(e) => setter(parseInt(e.currentTarget.value))}
+      />
     </div>
   );
 }
