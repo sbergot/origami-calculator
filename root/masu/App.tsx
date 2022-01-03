@@ -1,11 +1,13 @@
-import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
 import {
+  Formula,
   MathJaxContainer,
   Result,
   SizeInput,
   YoutubeEmbed,
 } from "../Shared/Layout";
+
+const r = String.raw;
 
 export default function App() {
   return (
@@ -22,10 +24,6 @@ export default function App() {
   );
 }
 
-function formatResult(x: number): string {
-  return (Math.round(x * 100) / 100).toString();
-}
-
 function MasuBox() {
   const [boxWidth, setWidth] = useState(49);
   const sheetWidth = (boxWidth / Math.sqrt(2)) * 4;
@@ -34,15 +32,11 @@ function MasuBox() {
       <h2 className="text-lg font-bold">Boîte Masu</h2>
       <SizeInput title="Largeur de la boîte" state={[boxWidth, setWidth]} />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {
-            "\\(largeur\\_feuille = \\frac{largeur\\_boîte \\times 4}{\\sqrt{2}}\\)"
-          }
-        </MathJax>
+        <Formula
+          formula={r`largeur\_feuille = \frac{largeur\_boîte \times 4}{\sqrt{2}}`}
+        />
         <Result value={sheetWidth} />
-        <MathJax>
-          {"\\(hauteur\\_boîte = \\frac{largeur\\_boîte}{2}\\)"}
-        </MathJax>
+        <Formula formula={r`hauteur\_boîte = \frac{largeur\_boîte}{2}`} />
         <Result value={boxWidth / 2} />
       </div>
     </div>
@@ -57,9 +51,7 @@ function Divisor1() {
       <h2 className="text-lg font-bold">Diviseur en +</h2>
       <SizeInput title="Largeur du diviseur" state={[boxWidth, setWidth]} />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {"\\(largeur\\_feuille = largeur\\_diviseur \\times 3\\)"}
-        </MathJax>
+        <Formula formula={r`largeur\_feuille = largeur\_diviseur \times 3`} />
         <Result value={sheetWidth} />
       </div>
     </div>
@@ -74,11 +66,9 @@ function Divisor2() {
       <h2 className="text-lg font-bold">Diviseur en X</h2>
       <SizeInput title="Largeur du diviseur" state={[boxWidth, setWidth]} />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {
-            "\\(largeur\\_feuille = \\frac{largeur\\_boîte \\times 4}{\\sqrt{2}}\\)"
-          }
-        </MathJax>
+        <Formula
+          formula={r`largeur\_feuille = \frac{largeur\_boîte \times 4}{\sqrt{2}}`}
+        />
         <Result value={sheetWidth} />
       </div>
     </div>

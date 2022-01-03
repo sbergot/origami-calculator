@@ -1,4 +1,4 @@
-import { MathJaxContext } from "better-react-mathjax";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { useState } from "react";
 import { Children, UseState } from "./UITypes";
 
@@ -83,4 +83,12 @@ function formatResult(x: number): string {
 
 export function Result({ value }: { value: number }) {
   return <span>=&nbsp;{formatResult(value)}</span>;
+}
+
+export function Formula({ formula }: { formula: string }) {
+  return <MathJax>{`\\(${formula}\\)`}</MathJax>;
+}
+
+export function FormulaSmall({ formula }: { formula: string }) {
+  return <MathJax>{`\\(\\small{${formula}}\\)`}</MathJax>;
 }

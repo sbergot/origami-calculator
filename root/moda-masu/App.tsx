@@ -1,7 +1,15 @@
-import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
-import { MathJaxContainer, Result, SizeInput, YoutubeEmbed } from "../Shared/Layout";
+import {
+  Formula,
+  FormulaSmall,
+  MathJaxContainer,
+  Result,
+  SizeInput,
+  YoutubeEmbed,
+} from "../Shared/Layout";
 import { UseState } from "../Shared/UITypes";
+
+const r = String.raw;
 
 export default function App() {
   const [boxWidth, setWidth] = useState(85);
@@ -31,9 +39,9 @@ function ModaMasuBox({
   lengthState: UseState;
   heightState: UseState;
 }) {
-  const [boxWidth, setWidth] = widthState;
-  const [boxLength, setLength] = lengthState;
-  const [boxHeight, setHeight] = heightState;
+  const [boxWidth] = widthState;
+  const [boxLength] = lengthState;
+  const [boxHeight] = heightState;
   const sheetWidth = boxWidth + boxLength + 4 * boxHeight;
   return (
     <div>
@@ -43,13 +51,11 @@ function ModaMasuBox({
       <SizeInput title="Hauteur de la boîte" state={heightState} />
       <div className="mt-4 formula-grid">
         <div>
-          <MathJax>{"\\(largeur\\_feuille = \\)"}</MathJax>
-          <MathJax>
-            {"\\(largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
-          </MathJax>
+          <Formula formula={r`largeur\_feuille = `} />
+          <Formula formula={r`largeur\_boîte \times 2 + longueur\_boîte`} />
         </div>
         <Result value={sheetWidth} />
-        <MathJax>{"\\(hauteur\\_boîte = largeur\\_boîte\\)"}</MathJax>
+        <Formula formula={r`hauteur\_boîte = largeur\_boîte`} />
         <Result value={boxWidth} />
       </div>
     </div>
@@ -72,42 +78,32 @@ function ModaMasuCover({
   return (
     <div>
       <h2 className="text-lg font-bold">Couvercle Moda Masu</h2>
-      <div>
-        <p>Marge couvercle en largeur</p>
-        <input
-          type="number"
-          className="border px-2"
-          value={coverWidthMargin}
-          onChange={(e) => setWidthMargin(parseInt(e.currentTarget.value))}
-        />
-      </div>
-      <div>
-        <p>Marge couvercle en longueur</p>
-        <input
-          type="number"
-          className="border px-2"
-          value={coverLengthMargin}
-          onChange={(e) => setLengthMargin(parseInt(e.currentTarget.value))}
-        />
-      </div>
+      <SizeInput
+        title="Marge couvercle en largeur"
+        state={[coverWidthMargin, setWidthMargin]}
+      />
+      <SizeInput
+        title="Marge couvercle en longueur"
+        state={[coverLengthMargin, setLengthMargin]}
+      />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}
-        </MathJax>
+        <FormulaSmall formula={r`largeur\_couvercle`} />
+        <Result value={coverWith} />
+        <FormulaSmall formula={r`longueur\_couvercle`} />
+        <Result value={coverLength} />
+        <FormulaSmall formula={r`hauteur\_couvercle = largeur\_couvercle`} />
+        <Result value={coverWith} />
+        <FormulaSmall
+          formula={r`longueur\_feuille = largeur\_couvercle \times 4`}
+        />
         <Result value={sheetLength} />
         <div>
-          <MathJax>{"\\(\\small{largeur\\_feuille = }\\)"}</MathJax>
-          <MathJax>
-            {
-              "\\(\\small{largeur\\_couvercle \\times 2 + longueur\\_couvercle}\\)"
-            }
-          </MathJax>
+          <FormulaSmall formula={r`largeur\_feuille = `} />
+          <FormulaSmall
+            formula={r`largeur\_couvercle \times 2 + longueur\_couvercle`}
+          />
         </div>
         <Result value={sheetWidth} />
-        <MathJax>
-          {"\\(\\small{hauteur\\_couvercle = largeur\\_couvercle}\\)"}
-        </MathJax>
-        <Result value={coverWith} />
       </div>
     </div>
   );

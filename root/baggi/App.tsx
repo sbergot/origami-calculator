@@ -1,6 +1,7 @@
-import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
 import {
+  Formula,
+  FormulaSmall,
   MathJaxContainer,
   Result,
   SizeInput,
@@ -9,6 +10,8 @@ import {
 import { UseState } from "../Shared/UITypes";
 import baggiUrl from "./baggi.svg";
 import baggiLegendUrl from "./baggi_legend.svg";
+
+const r = String.raw;
 
 export default function App() {
   const [boxWidth, setWidth] = useState(41);
@@ -33,10 +36,6 @@ export default function App() {
   );
 }
 
-function formatResult(x: number): string {
-  return (Math.round(x * 100) / 100).toString();
-}
-
 function BaggiBox({
   widthState,
   lengthState,
@@ -54,18 +53,14 @@ function BaggiBox({
       <SizeInput title="Largeur de la boîte" state={widthState} />
       <SizeInput title="Longueur de la boîte" state={lengthState} />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {"\\(longueur\\_feuille = largeur\\_boîte \\times 4\\)"}
-        </MathJax>
+        <Formula formula={r`longueur\_feuille = largeur\_boîte \times 4`} />
         <Result value={sheetLength} />
         <div>
-          <MathJax>{"\\(largeur\\_feuille = \\)"}</MathJax>
-          <MathJax>
-            {"\\(largeur\\_boîte \\times 2 + longueur\\_boîte\\)"}
-          </MathJax>
+          <Formula formula={r`largeur\_feuille = `} />
+          <Formula formula={r`largeur\_boîte \times 2 + longueur\_boîte`} />
         </div>
         <Result value={sheetWidth} />
-        <MathJax>{"\\(hauteur\\_boîte = largeur\\_boîte\\)"}</MathJax>
+        <Formula formula={r`hauteur\_boîte = largeur\_boîte`} />
         <Result value={boxWidth} />
       </div>
     </div>
@@ -97,29 +92,21 @@ function BaggiCover({
         state={[coverLengthMargin, setLengthMargin]}
       />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {"\\(\\small{largeur\\_couvercle}\\)"}
-        </MathJax>
+        <FormulaSmall formula={r`largeur\_couvercle`} />
         <Result value={coverWith} />
-        <MathJax>
-          {"\\(\\small{longueur\\_couvercle}\\)"}
-        </MathJax>
+        <FormulaSmall formula={r`longueur\_couvercle`} />
         <Result value={coverLength} />
-        <MathJax>
-          {"\\(\\small{hauteur\\_couvercle = largeur\\_couvercle}\\)"}
-        </MathJax>
+        <FormulaSmall formula={r`hauteur\_couvercle = largeur\_couvercle`} />
         <Result value={coverWith} />
-        <MathJax>
-          {"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}
-        </MathJax>
+        <FormulaSmall
+          formula={r`longueur\_feuille = largeur\_couvercle \times 4`}
+        />
         <Result value={sheetLength} />
         <div>
-          <MathJax>{"\\(\\small{largeur\\_feuille = }\\)"}</MathJax>
-          <MathJax>
-            {
-              "\\(\\small{largeur\\_couvercle \\times 2 + longueur\\_couvercle}\\)"
-            }
-          </MathJax>
+          <FormulaSmall formula={r`largeur\_feuille = `} />
+          <FormulaSmall
+            formula={r`largeur\_couvercle \times 2 + longueur\_couvercle`}
+          />
         </div>
         <Result value={sheetWidth} />
       </div>
