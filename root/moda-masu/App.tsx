@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
-  Formula,
-  FormulaSmall,
+  formatResult,
   MathJaxContainer,
   Result,
   SizeInput,
   YoutubeEmbed,
 } from "../Shared/Layout";
 import { UseState } from "../Shared/UITypes";
+import modaMasuUrl from "./moda-masu.svg";
 
 const r = String.raw;
 
@@ -23,10 +23,95 @@ export default function App() {
           lengthState={[boxLength, setLength]}
           heightState={[boxHeigth, setHeight]}
         />
-        <ModaMasuCover boxWidth={boxWidth} boxLength={boxLength} />
-        <YoutubeEmbed embedId="WYvvkrYawpk" className="max-w-4xl" />
+        <ModaMasuCover
+          boxWidth={boxWidth}
+          boxLength={boxLength}
+          boxHeight={boxHeigth}
+        />
+        <div className="w-full max-w-sm">
+          <img src={modaMasuUrl} />
+        </div>
+        <YoutubeEmbed embedId="WYvvkrYawpk" className="max-w-md" />
       </div>
     </MathJaxContainer>
+  );
+}
+
+function ModaMasuMeasures({
+  boxWidth,
+  boxLength,
+  boxHeight,
+}: {
+  boxWidth: number;
+  boxLength: number;
+  boxHeight: number;
+}) {
+  const sheetWidth = (boxWidth + boxLength + 4 * boxHeight) / Math.sqrt(2);
+  return (
+    <>
+      <div className="mt-4 formula-grid">
+        <span>Largeur feuille</span>
+        <Result value={sheetWidth} />
+      </div>
+      <div className="grid gap-2 grid-cols-2fc grid-flow-row sm:grid-rows-2 sm:grid-flow-col">
+        <span>diagonale 1</span>
+        <span>diagonale 2</span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 - boxLength / 2 - boxHeight * 2
+          )}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 - boxWidth / 2 - boxHeight * 2
+          )}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 - boxLength / 2 - boxHeight
+          )}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 - boxWidth / 2 - boxHeight
+          )}
+        </span>
+        <span>
+          {formatResult((sheetWidth * Math.sqrt(2)) / 2 - boxLength / 2)}
+        </span>
+        <span>
+          {formatResult((sheetWidth * Math.sqrt(2)) / 2 - boxWidth / 2)}
+        </span>
+        <span>{formatResult((sheetWidth * Math.sqrt(2)) / 2)}</span>
+        <span>{formatResult((sheetWidth * Math.sqrt(2)) / 2)}</span>
+        <span>
+          {formatResult((sheetWidth * Math.sqrt(2)) / 2 + boxLength / 2)}
+        </span>
+        <span>
+          {formatResult((sheetWidth * Math.sqrt(2)) / 2 + boxWidth / 2)}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 + boxLength / 2 + boxHeight
+          )}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 + boxWidth / 2 + boxHeight
+          )}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 + boxLength / 2 + boxHeight * 2
+          )}
+        </span>
+        <span>
+          {formatResult(
+            (sheetWidth * Math.sqrt(2)) / 2 + boxWidth / 2 + boxHeight * 2
+          )}
+        </span>
+      </div>
+    </>
   );
 }
 
@@ -42,22 +127,17 @@ function ModaMasuBox({
   const [boxWidth] = widthState;
   const [boxLength] = lengthState;
   const [boxHeight] = heightState;
-  const sheetWidth = boxWidth + boxLength + 4 * boxHeight;
   return (
     <div>
       <h2 className="text-lg font-bold">Boîte Moda Masu</h2>
       <SizeInput title="Largeur de la boîte" state={widthState} />
       <SizeInput title="Longueur de la boîte" state={lengthState} />
       <SizeInput title="Hauteur de la boîte" state={heightState} />
-      <div className="mt-4 formula-grid">
-        <div>
-          <Formula formula={r`largeur\_feuille = `} />
-          <Formula formula={r`largeur\_boîte \times 2 + longueur\_boîte`} />
-        </div>
-        <Result value={sheetWidth} />
-        <Formula formula={r`hauteur\_boîte = largeur\_boîte`} />
-        <Result value={boxWidth} />
-      </div>
+      <ModaMasuMeasures
+        boxWidth={boxWidth}
+        boxHeight={boxHeight}
+        boxLength={boxLength}
+      />
     </div>
   );
 }
@@ -65,16 +145,18 @@ function ModaMasuBox({
 function ModaMasuCover({
   boxWidth,
   boxLength,
+  boxHeight,
 }: {
   boxWidth: number;
   boxLength: number;
+  boxHeight: number;
 }) {
   const [coverWidthMargin, setWidthMargin] = useState(2);
-  const [coverLengthMargin, setLengthMargin] = useState(2);
+  const [coverLengthMargin, setLengthMargin] = useState(4);
+  const [coverHeightMargin, setHeightMargin] = useState(3);
   const coverWith = boxWidth + coverWidthMargin;
   const coverLength = boxLength + coverLengthMargin;
-  const sheetLength = coverWith * 4;
-  const sheetWidth = coverLength * 2 + boxLength;
+  const coverHeight = boxHeight - coverHeightMargin;
   return (
     <div>
       <h2 className="text-lg font-bold">Couvercle Moda Masu</h2>
@@ -86,25 +168,15 @@ function ModaMasuCover({
         title="Marge couvercle en longueur"
         state={[coverLengthMargin, setLengthMargin]}
       />
-      <div className="mt-4 formula-grid">
-        <FormulaSmall formula={r`largeur\_couvercle`} />
-        <Result value={coverWith} />
-        <FormulaSmall formula={r`longueur\_couvercle`} />
-        <Result value={coverLength} />
-        <FormulaSmall formula={r`hauteur\_couvercle = largeur\_couvercle`} />
-        <Result value={coverWith} />
-        <FormulaSmall
-          formula={r`longueur\_feuille = largeur\_couvercle \times 4`}
-        />
-        <Result value={sheetLength} />
-        <div>
-          <FormulaSmall formula={r`largeur\_feuille = `} />
-          <FormulaSmall
-            formula={r`largeur\_couvercle \times 2 + longueur\_couvercle`}
-          />
-        </div>
-        <Result value={sheetWidth} />
-      </div>
+      <SizeInput
+        title="Marge couvercle en hauteur"
+        state={[coverHeightMargin, setHeightMargin]}
+      />
+      <ModaMasuMeasures
+        boxWidth={coverWith}
+        boxHeight={coverHeight}
+        boxLength={coverLength}
+      />
     </div>
   );
 }

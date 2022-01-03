@@ -77,7 +77,7 @@ export function SizeInput({
   );
 }
 
-function formatResult(x: number): string {
+export function formatResult(x: number): string {
   return (Math.round(x * 100) / 100).toString();
 }
 
