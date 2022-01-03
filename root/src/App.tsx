@@ -22,7 +22,7 @@ export default function App() {
         <h2 className="font-bold">Autres ressources</h2>
         <Link href="https://www.facebook.com/groups/406940570021633">Les ludistes origamistes sur facebook</Link>
         <Link href="https://www.corniro.com/">www.corniro.com</Link>
-
+        <Link href="https://github.com/sbergot/origami-calculator">Code source de ce site</Link>
       </div>
     </Container>
   );
