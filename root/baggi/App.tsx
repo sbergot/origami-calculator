@@ -1,6 +1,11 @@
 import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
-import { MathJaxContainer, Result, SizeInput, YoutubeEmbed } from "../Shared/Layout";
+import {
+  MathJaxContainer,
+  Result,
+  SizeInput,
+  YoutubeEmbed,
+} from "../Shared/Layout";
 import { UseState } from "../Shared/UITypes";
 import baggiUrl from "./baggi.svg";
 import baggiLegendUrl from "./baggi_legend.svg";
@@ -79,7 +84,7 @@ function BaggiCover({
   const coverWith = boxWidth + coverWidthMargin;
   const coverLength = boxLength + coverLengthMargin;
   const sheetLength = coverWith * 4;
-  const sheetWidth = coverLength * 2 + boxLength;
+  const sheetWidth = coverLength + 2 * coverWith;
   return (
     <div>
       <h2 className="text-lg font-bold">Couvercle Baggi</h2>
@@ -93,6 +98,18 @@ function BaggiCover({
       />
       <div className="mt-4 formula-grid">
         <MathJax>
+          {"\\(\\small{largeur\\_couvercle}\\)"}
+        </MathJax>
+        <Result value={coverWith} />
+        <MathJax>
+          {"\\(\\small{longueur\\_couvercle}\\)"}
+        </MathJax>
+        <Result value={coverLength} />
+        <MathJax>
+          {"\\(\\small{hauteur\\_couvercle = largeur\\_couvercle}\\)"}
+        </MathJax>
+        <Result value={coverWith} />
+        <MathJax>
           {"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}
         </MathJax>
         <Result value={sheetLength} />
@@ -105,10 +122,6 @@ function BaggiCover({
           </MathJax>
         </div>
         <Result value={sheetWidth} />
-        <MathJax>
-          {"\\(\\small{hauteur\\_couvercle = largeur\\_couvercle}\\)"}
-        </MathJax>
-        <Result value={coverWith} />
       </div>
     </div>
   );
