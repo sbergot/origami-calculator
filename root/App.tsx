@@ -1,16 +1,4 @@
-import { Container } from "./Shared/Layout";
-import { Children } from "./Shared/UITypes";
-
-function Link({ href, children }: { href: string } & Children) {
-  return (
-    <a
-      className="underline text-orange-600 visited:text-orange-800"
-      href={href}
-    >
-      {children}
-    </a>
-  );
-}
+import { Container, Link } from "./Shared/Layout";
 
 export default function App() {
   return (
@@ -19,8 +7,9 @@ export default function App() {
         <div className="flex flex-col gap-2">
           <h2 className="font-bold">Pliages</h2>
           <Link href="masu/">Boîte Masu & diviseurs</Link>
-          <Link href="moda-masu/">Boîte Moda Masu (WIP)</Link>
+          <Link href="moda-masu/">Boîte Moda Masu</Link>
           <Link href="baggi/">Boîte Baggi</Link>
+          <Link href="corolle/">Boîte Corolle</Link>
         </div>
         <div className="flex flex-col gap-2">
           <h2 className="font-bold">Autres ressources</h2>

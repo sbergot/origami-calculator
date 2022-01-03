@@ -92,3 +92,14 @@ export function Formula({ formula }: { formula: string }) {
 export function FormulaSmall({ formula }: { formula: string }) {
   return <MathJax>{`\\(\\small{${formula}}\\)`}</MathJax>;
 }
+
+export function Link({ href, children }: { href: string } & Children) {
+  return (
+    <a
+      className="underline text-orange-600 visited:text-orange-800"
+      href={href}
+    >
+      {children}
+    </a>
+  );
+}
