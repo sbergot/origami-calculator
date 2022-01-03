@@ -53,7 +53,10 @@ function ModaMasuMeasures({
         <span>Largeur feuille</span>
         <Result value={sheetWidth} />
       </div>
-      <p className="max-w-sm my-4">Marquer chaque diagonale sept fois aux mesures indiquées dans le tableau suivant</p>
+      <p className="max-w-sm my-4">
+        Marquer chaque diagonale sept fois aux mesures indiquées dans le tableau
+        suivant (mettre le 0 de la règle sur le coin côté m1).
+      </p>
       <div className="grid justify-start gap-2 grid-cols-3fc grid-flow-row sm:grid-rows-3 sm:grid-flow-col">
         <span></span>
         <span>diagonale 1</span>
