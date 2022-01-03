@@ -2,57 +2,46 @@ import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
 import { MathJaxContainer, Result, SizeInput, YoutubeEmbed } from "../Shared/Layout";
 import { UseState } from "../Shared/UITypes";
-import baggiUrl from "./baggi.svg";
-import baggiLegendUrl from "./baggi_legend.svg";
 
 export default function App() {
-  const [boxWidth, setWidth] = useState(41);
-  const [boxLength, setLength] = useState(70);
+  const [boxWidth, setWidth] = useState(85);
+  const [boxLength, setLength] = useState(130);
+  const [boxHeigth, setHeight] = useState(10.5);
   return (
     <MathJaxContainer>
       <div className="fluid-container mt-4">
-        <BaggiBox
+        <ModaMasuBox
           widthState={[boxWidth, setWidth]}
           lengthState={[boxLength, setLength]}
+          heightState={[boxHeigth, setHeight]}
         />
-        <BaggiCover boxWidth={boxWidth} boxLength={boxLength} />
-        <div className="w-full max-w-sm">
-          <img src={baggiUrl} />
-        </div>
-        <div className="w-full max-w-sm">
-          <img src={baggiLegendUrl} />
-        </div>
-        <YoutubeEmbed embedId="ZdtQVv-AxR0" className="max-w-4xl" />
+        <ModaMasuCover boxWidth={boxWidth} boxLength={boxLength} />
+        <YoutubeEmbed embedId="WYvvkrYawpk" className="max-w-4xl" />
       </div>
     </MathJaxContainer>
   );
 }
 
-function formatResult(x: number): string {
-  return (Math.round(x * 100) / 100).toString();
-}
-
-function BaggiBox({
+function ModaMasuBox({
   widthState,
   lengthState,
+  heightState,
 }: {
   widthState: UseState;
   lengthState: UseState;
+  heightState: UseState;
 }) {
-  const [boxWidth] = widthState;
-  const [boxLength] = lengthState;
-  const sheetLength = boxWidth * 4;
-  const sheetWidth = boxWidth * 2 + boxLength;
+  const [boxWidth, setWidth] = widthState;
+  const [boxLength, setLength] = lengthState;
+  const [boxHeight, setHeight] = heightState;
+  const sheetWidth = boxWidth + boxLength + 4 * boxHeight;
   return (
     <div>
-      <h2 className="text-lg font-bold">Boîte Baggi</h2>
+      <h2 className="text-lg font-bold">Boîte Moda Masu</h2>
       <SizeInput title="Largeur de la boîte" state={widthState} />
       <SizeInput title="Longueur de la boîte" state={lengthState} />
+      <SizeInput title="Hauteur de la boîte" state={heightState} />
       <div className="mt-4 formula-grid">
-        <MathJax>
-          {"\\(longueur\\_feuille = largeur\\_boîte \\times 4\\)"}
-        </MathJax>
-        <Result value={sheetLength} />
         <div>
           <MathJax>{"\\(largeur\\_feuille = \\)"}</MathJax>
           <MathJax>
@@ -67,7 +56,7 @@ function BaggiBox({
   );
 }
 
-function BaggiCover({
+function ModaMasuCover({
   boxWidth,
   boxLength,
 }: {
@@ -82,15 +71,25 @@ function BaggiCover({
   const sheetWidth = coverLength * 2 + boxLength;
   return (
     <div>
-      <h2 className="text-lg font-bold">Couvercle Baggi</h2>
-      <SizeInput
-        title="Marge couvercle en largeur"
-        state={[coverWidthMargin, setWidthMargin]}
-      />
-      <SizeInput
-        title="Marge couvercle en longueur"
-        state={[coverLengthMargin, setLengthMargin]}
-      />
+      <h2 className="text-lg font-bold">Couvercle Moda Masu</h2>
+      <div>
+        <p>Marge couvercle en largeur</p>
+        <input
+          type="number"
+          className="border px-2"
+          value={coverWidthMargin}
+          onChange={(e) => setWidthMargin(parseInt(e.currentTarget.value))}
+        />
+      </div>
+      <div>
+        <p>Marge couvercle en longueur</p>
+        <input
+          type="number"
+          className="border px-2"
+          value={coverLengthMargin}
+          onChange={(e) => setLengthMargin(parseInt(e.currentTarget.value))}
+        />
+      </div>
       <div className="mt-4 formula-grid">
         <MathJax>
           {"\\(\\small{longueur\\_feuille = largeur\\_couvercle \\times 4}\\)"}

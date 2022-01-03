@@ -76,3 +76,11 @@ export function SizeInput({
     </div>
   );
 }
+
+function formatResult(x: number): string {
+  return (Math.round(x * 100) / 100).toString();
+}
+
+export function Result({ value }: { value: number }) {
+  return <span>=&nbsp;{formatResult(value)}</span>;
+}

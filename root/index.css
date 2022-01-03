@@ -6,6 +6,10 @@
   .fluid-container {
     @apply flex flex-wrap gap-4 justify-between;
   }
+
+  .formula-grid {
+    @apply grid grid-cols-2fc items-end gap-2;
+  }
 }
 
 .video-responsive {

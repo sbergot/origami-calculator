@@ -1,6 +1,11 @@
 import { MathJax } from "better-react-mathjax";
 import { useState } from "react";
-import { MathJaxContainer, SizeInput, YoutubeEmbed } from "../Shared/Layout";
+import {
+  MathJaxContainer,
+  Result,
+  SizeInput,
+  YoutubeEmbed,
+} from "../Shared/Layout";
 
 export default function App() {
   return (
@@ -28,17 +33,17 @@ function MasuBox() {
     <div>
       <h2 className="text-lg font-bold">Boîte Masu</h2>
       <SizeInput title="Largeur de la boîte" state={[boxWidth, setWidth]} />
-      <div className="mt-4 grid grid-cols-2fc gap-2">
+      <div className="mt-4 formula-grid">
         <MathJax>
           {
             "\\(largeur\\_feuille = \\frac{largeur\\_boîte \\times 4}{\\sqrt{2}}\\)"
           }
         </MathJax>
-        <span>=&nbsp;{formatResult(sheetWidth)}</span>
+        <Result value={sheetWidth} />
         <MathJax>
           {"\\(hauteur\\_boîte = \\frac{largeur\\_boîte}{2}\\)"}
         </MathJax>
-        <span>=&nbsp;{formatResult(boxWidth / 2)}</span>
+        <Result value={boxWidth / 2} />
       </div>
     </div>
   );
@@ -51,11 +56,11 @@ function Divisor1() {
     <div>
       <h2 className="text-lg font-bold">Diviseur en +</h2>
       <SizeInput title="Largeur du diviseur" state={[boxWidth, setWidth]} />
-      <div className="mt-4 grid grid-cols-2fc gap-2">
+      <div className="mt-4 formula-grid">
         <MathJax>
           {"\\(largeur\\_feuille = largeur\\_diviseur \\times 3\\)"}
         </MathJax>
-        <span>=&nbsp;{formatResult(sheetWidth)}</span>
+        <Result value={sheetWidth} />
       </div>
     </div>
   );
@@ -68,13 +73,13 @@ function Divisor2() {
     <div>
       <h2 className="text-lg font-bold">Diviseur en X</h2>
       <SizeInput title="Largeur du diviseur" state={[boxWidth, setWidth]} />
-      <div className="mt-4 grid grid-cols-2fc gap-2">
+      <div className="mt-4 formula-grid">
         <MathJax>
           {
             "\\(largeur\\_feuille = \\frac{largeur\\_boîte \\times 4}{\\sqrt{2}}\\)"
           }
         </MathJax>
-        <span>=&nbsp;{formatResult(sheetWidth)}</span>
+        <Result value={sheetWidth} />
       </div>
     </div>
   );
