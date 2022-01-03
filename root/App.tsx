@@ -19,7 +19,7 @@ export default function App() {
       <div className="flex flex-col gap-2">
         <h2 className="font-bold">Pliages</h2>
         <Link href="masu/">Boîte Masu & diviseurs</Link>
-        <Link href="moda-masu/">Boîte Moda Masu</Link>
+        <Link href="moda-masu/">Boîte Moda Masu (WIP)</Link>
         <Link href="baggi/">Boîte Baggi</Link>
       </div>
       <div className="flex flex-col gap-2">
