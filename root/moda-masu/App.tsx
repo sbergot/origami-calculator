@@ -53,9 +53,12 @@ function ModaMasuMeasures({
         <span>Largeur feuille</span>
         <Result value={sheetWidth} />
       </div>
-      <div className="grid gap-2 grid-cols-2fc grid-flow-row sm:grid-rows-2 sm:grid-flow-col">
+      <p className="max-w-sm my-4">Marquer chaque diagonale sept fois aux mesures indiquées dans le tableau suivant</p>
+      <div className="grid justify-start gap-2 grid-cols-3fc grid-flow-row sm:grid-rows-3 sm:grid-flow-col">
+        <span></span>
         <span>diagonale 1</span>
         <span>diagonale 2</span>
+        <span>m1</span>
         <span>
           {formatResult(
             (sheetWidth * Math.sqrt(2)) / 2 - boxLength / 2 - boxHeight * 2
@@ -66,6 +69,7 @@ function ModaMasuMeasures({
             (sheetWidth * Math.sqrt(2)) / 2 - boxWidth / 2 - boxHeight * 2
           )}
         </span>
+        <span>m2</span>
         <span>
           {formatResult(
             (sheetWidth * Math.sqrt(2)) / 2 - boxLength / 2 - boxHeight
@@ -76,20 +80,24 @@ function ModaMasuMeasures({
             (sheetWidth * Math.sqrt(2)) / 2 - boxWidth / 2 - boxHeight
           )}
         </span>
+        <span>m3</span>
         <span>
           {formatResult((sheetWidth * Math.sqrt(2)) / 2 - boxLength / 2)}
         </span>
         <span>
           {formatResult((sheetWidth * Math.sqrt(2)) / 2 - boxWidth / 2)}
         </span>
+        <span>m4</span>
         <span>{formatResult((sheetWidth * Math.sqrt(2)) / 2)}</span>
         <span>{formatResult((sheetWidth * Math.sqrt(2)) / 2)}</span>
+        <span>m5</span>
         <span>
           {formatResult((sheetWidth * Math.sqrt(2)) / 2 + boxLength / 2)}
         </span>
         <span>
           {formatResult((sheetWidth * Math.sqrt(2)) / 2 + boxWidth / 2)}
         </span>
+        <span>m6</span>
         <span>
           {formatResult(
             (sheetWidth * Math.sqrt(2)) / 2 + boxLength / 2 + boxHeight
@@ -100,6 +108,7 @@ function ModaMasuMeasures({
             (sheetWidth * Math.sqrt(2)) / 2 + boxWidth / 2 + boxHeight
           )}
         </span>
+        <span>m7</span>
         <span>
           {formatResult(
             (sheetWidth * Math.sqrt(2)) / 2 + boxLength / 2 + boxHeight * 2
