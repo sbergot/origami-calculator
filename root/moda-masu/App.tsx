@@ -9,8 +9,6 @@ import {
 import { UseState } from "../Shared/UITypes";
 import modaMasuUrl from "./moda-masu.svg";
 
-const r = String.raw;
-
 export default function App() {
   const [boxWidth, setWidth] = useState(85);
   const [boxLength, setLength] = useState(130);
