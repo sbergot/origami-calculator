@@ -50,10 +50,10 @@ function HexaBox({
       <SizeInput title="Hauteur" state={heightState} />
       <SizeInput title="Grande diagonale" state={diagState} />
       <div>Longueur de la feuille: {formatResult(sheetLength)}</div>
-      <div>Largeur de la feuille: {(diag * 3) / 2}</div>
-      <div>m1: {diag / 2}</div>
-      <div>m2: {height}</div>
-      <div>m3: {formatResult(sheetLength - 2 * height)}</div>
+      <div>Largeur de la feuille: {formatResult((diag * 3) / 2)}</div>
+      <div>m1 = {diag / 2}</div>
+      <div>m2 = {height}</div>
+      <div>m3 = {formatResult(sheetLength - 2 * height)}</div>
     </div>
   );
 }
@@ -65,8 +65,8 @@ function HexaCover({
   boxDiag: number;
   boxHeight: number;
 }) {
-  const [diagonalMargin, setDiagonalMargin] = useState(4);
-  const [heightMargin, setHeightMargin] = useState(3);
+  const [diagonalMargin, setDiagonalMargin] = useState(0.2);
+  const [heightMargin, setHeightMargin] = useState(1);
   const height = boxHeight - heightMargin;
   const diag = boxDiag + diagonalMargin;
   const sheetLength = 2 * height + (diag * Math.sqrt(3)) / 2;
@@ -82,10 +82,10 @@ function HexaCover({
         state={[diagonalMargin, setDiagonalMargin]}
       />
       <div>Longueur de la feuille: {formatResult(sheetLength)}</div>
-      <div>Largeur de la feuille: {(diag * 3) / 2}</div>
-      <div>m1: {diag / 2}</div>
-      <div>m2: {height}</div>
-      <div>m3: {formatResult(sheetLength - 2 * height)}</div>
+      <div>Largeur de la feuille: {formatResult((diag * 3) / 2)}</div>
+      <div>m1 = {diag / 2}</div>
+      <div>m2 = {height}</div>
+      <div>m3 = {formatResult(sheetLength - 2 * height)}</div>
     </div>
   );
 }
