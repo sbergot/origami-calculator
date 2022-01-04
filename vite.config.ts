@@ -14,6 +14,7 @@ export default defineConfig({
         baggi: resolve(__dirname, 'root/baggi/index.html'),
         modamasu: resolve(__dirname, 'root/moda-masu/index.html'),
         corolle: resolve(__dirname, 'root/corolle/index.html'),
+        hexagonal: resolve(__dirname, 'root/hexagonal/index.html'),
       }
     }
   }
