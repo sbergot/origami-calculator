@@ -1,4 +1,5 @@
 {
+    "id": "ludistes_origamistes",
     "short_name": "Ludistes origamistes",
     "name": "Ludistes origamistes: calculs de gabaris",
     "icons": [
@@ -9,10 +10,10 @@
       }
     ],
     "start_url": "/?source=pwa",
-    "background_color": "#3367D6",
+    "background_color": "#A02C91",
     "display": "standalone",
     "scope": "/",
-    "theme_color": "#3367D6",
+    "theme_color": "#82B5CA",
     "shortcuts": [
       {
         "name": "Boîte Masu",
