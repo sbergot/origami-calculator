@@ -1,0 +1,27 @@
+{
+    "short_name": "Ludistes origamistes",
+    "name": "Ludistes origamistes: calculs de gabaris",
+    "icons": [
+      {
+        "src": "/icon.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3367D6",
+    "shortcuts": [
+      {
+        "name": "Boîte Masu",
+        "short_name": "Masu",
+        "description": "Fabriquer une boîte masu",
+        "url": "/masu/?source=pwa",
+        "icons": [{ "src": "/icon.png", "sizes": "192x192" }]
+      }
+    ],
+    "description": "Calculs de gabaris pour origamis servant à ranger",
+    "screenshots": []
+  }
