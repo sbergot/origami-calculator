@@ -7,6 +7,8 @@ export default defineConfig({
   plugins: [react()],
   root: "./root",
   build: {
+    manifest: true,
+    outDir: "../dist",
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'root/index.html'),
