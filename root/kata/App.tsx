@@ -54,7 +54,6 @@ function KataBox() {
   return (
     <div>
       <Subtitle>Boîte kata</Subtitle>
-      <Subtitle>test</Subtitle>
       <Link href="https://www.facebook.com/groups/406940570021633/permalink/698296610886026/">
         Tutorial
       </Link>
