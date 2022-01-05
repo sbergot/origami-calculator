@@ -10,7 +10,7 @@ export default function App() {
           <Link href="moda-masu/">Boîte Moda Masu</Link>
           <Link href="baggi/">Boîte Baggi</Link>
           <Link href="corolle/">Boîte Corolle</Link>
-          <Link href="hexagonal/">Boîte hexagonale (WIP)</Link>
+          <Link href="hexagonal/">Boîte hexagonale</Link>
           <Link href="kata/">Boîte kata (WIP)</Link>
         </div>
         <div className="flex flex-col gap-2">
