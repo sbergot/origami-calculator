@@ -60,10 +60,13 @@ export function YoutubeEmbed({
 export function SizeInput({
   title,
   state: [value, setter],
+  process,
 }: {
   title: string;
   state: UseState;
+  process?: (i: number) => number;
 }) {
+  const preprocess: (i: number) => number = process ?? ((i) => i);
   return (
     <div>
       <p>{title}</p>
@@ -71,7 +74,7 @@ export function SizeInput({
         type="number"
         className="border px-2"
         value={value}
-        onChange={(e) => setter(parseInt(e.currentTarget.value))}
+        onChange={(e) => setter(preprocess(parseInt(e.currentTarget.value)))}
       />
     </div>
   );

@@ -18,6 +18,7 @@ export default function App() {
         <div className="w-full max-w-md">
           <img src={kataBoxUrl} />
         </div>
+        <KataDivisor />
       </div>
     </MathJaxContainer>
   );
@@ -72,6 +73,46 @@ function KataBox() {
         prefix="w"
         marks={[margin, height, height, width, height, height, margin]}
       />
+    </div>
+  );
+}
+
+function processSectionNumber(i: number): number {
+  return Math.max(Math.min(Math.trunc(i), 6), 2);
+}
+
+function KataDivisor() {
+  const [height, setHeight] = useState(18);
+  const [width, setWidth] = useState(45);
+  const [sectionNbr, setSectionNbr] = useState(4);
+  const [sections, setSections] = useState([35, 20, 20, 35, 0, 0]);
+  function setSectionAt(idx: number, value: number) {
+    const newSections = [...sections];
+    newSections[idx] = value;
+    setSections(newSections);
+  }
+  return (
+    <div>
+      <Subtitle>Diviseur kata 1</Subtitle>
+      <SizeInput title="Hauteur" state={[height, setHeight]} />
+      <SizeInput title="Largeur" state={[width, setWidth]} />
+      <SizeInput
+        title="Nombre de sections"
+        state={[sectionNbr, setSectionNbr]}
+        process={processSectionNumber}
+      />
+      {sections.map((section, idx) => (
+        <div>
+          <p>section {idx}</p>
+          <input
+            type="number"
+            className="border px-2"
+            value={section}
+            disabled={idx >= sectionNbr}
+            onChange={(e) => setSectionAt(idx, parseInt(e.currentTarget.value))}
+          />
+        </div>
+      ))}
     </div>
   );
 }
