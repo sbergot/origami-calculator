@@ -15,6 +15,7 @@ export default defineConfig({
         modamasu: resolve(__dirname, 'root/moda-masu/index.html'),
         corolle: resolve(__dirname, 'root/corolle/index.html'),
         hexagonal: resolve(__dirname, 'root/hexagonal/index.html'),
+        kata: resolve(__dirname, 'root/kata/index.html'),
       }
     }
   }

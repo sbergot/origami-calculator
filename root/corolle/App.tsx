@@ -3,8 +3,9 @@ import {
   Link,
   MathJaxContainer,
   SizeInput,
+  Subtitle,
   YoutubeEmbed,
-} from "../Shared/Layout";
+} from "../Shared/Components";
 import { UseState } from "../Shared/UITypes";
 import corolleUrl from "./corolle.svg";
 import moduleUrl from "./assemblable.svg";
@@ -52,7 +53,7 @@ function CorolleBox({
   const [boxHeight] = heightState;
   return (
     <div>
-      <h2 className="text-lg font-bold">Boîte corolle</h2>
+      <Subtitle>Boîte corolle</Subtitle>
       <SizeInput title="Largeur de la boîte" state={widthState} />
       <SizeInput title="Longueur de la boîte" state={lengthState} />
       <SizeInput title="Hauteur de la boîte" state={heightState} />
@@ -74,7 +75,7 @@ function CorolleModule({
 }) {
   return (
     <div>
-      <h2 className="text-lg font-bold">Module assemblable</h2>
+      <Subtitle>Module assemblable</Subtitle>
       <div>Largeur de la feuille = {boxHeight * 3 + boxWidth}</div>
       <div>Longueur de la feuille = {boxHeight * 2 + boxLength}</div>
       <Link href="https://www.facebook.com/groups/406940570021633/permalink/702912703757750/">Tutorial</Link>

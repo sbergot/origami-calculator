@@ -5,8 +5,9 @@ import {
   MathJaxContainer,
   Result,
   SizeInput,
+  Subtitle,
   YoutubeEmbed,
-} from "../Shared/Layout";
+} from "../Shared/Components";
 import { UseState } from "../Shared/UITypes";
 import baggiUrl from "./baggi.svg";
 import baggiLegendUrl from "./baggi_legend.svg";
@@ -49,7 +50,7 @@ function BaggiBox({
   const sheetWidth = boxWidth * 2 + boxLength;
   return (
     <div>
-      <h2 className="text-lg font-bold">Boîte Baggi</h2>
+      <Subtitle>Boîte Baggi</Subtitle>
       <SizeInput title="Largeur de la boîte" state={widthState} />
       <SizeInput title="Longueur de la boîte" state={lengthState} />
       <div className="mt-4 formula-grid">
@@ -82,7 +83,7 @@ function BaggiCover({
   const sheetWidth = coverLength + 2 * coverWith;
   return (
     <div>
-      <h2 className="text-lg font-bold">Couvercle Baggi</h2>
+      <Subtitle>Couvercle Baggi</Subtitle>
       <SizeInput
         title="Marge couvercle en largeur"
         state={[coverWidthMargin, setWidthMargin]}

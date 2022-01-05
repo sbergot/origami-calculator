@@ -4,8 +4,9 @@ import {
   MathJaxContainer,
   Result,
   SizeInput,
+  Subtitle,
   YoutubeEmbed,
-} from "../Shared/Layout";
+} from "../Shared/Components";
 
 const r = String.raw;
 
@@ -29,7 +30,7 @@ function MasuBox() {
   const sheetWidth = (boxWidth / Math.sqrt(2)) * 4;
   return (
     <div>
-      <h2 className="text-lg font-bold">Boîte Masu</h2>
+      <Subtitle>Boîte Masu</Subtitle>
       <SizeInput title="Largeur de la boîte" state={[boxWidth, setWidth]} />
       <div className="mt-4 formula-grid">
         <Formula
@@ -48,7 +49,7 @@ function Divisor1() {
   const sheetWidth = boxWidth * 3;
   return (
     <div>
-      <h2 className="text-lg font-bold">Diviseur en +</h2>
+      <Subtitle>Diviseur en +</Subtitle>
       <SizeInput title="Largeur du diviseur" state={[boxWidth, setWidth]} />
       <div className="mt-4 formula-grid">
         <Formula formula={r`largeur\_feuille = largeur\_diviseur \times 3`} />
@@ -63,7 +64,7 @@ function Divisor2() {
   const sheetWidth = boxWidth * (4 / Math.sqrt(2));
   return (
     <div>
-      <h2 className="text-lg font-bold">Diviseur en X</h2>
+      <Subtitle>Diviseur en X</Subtitle>
       <SizeInput title="Largeur du diviseur" state={[boxWidth, setWidth]} />
       <div className="mt-4 formula-grid">
         <Formula

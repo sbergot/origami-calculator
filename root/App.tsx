@@ -1,19 +1,20 @@
-import { Container, Link } from "./Shared/Layout";
+import { Container, Link, Subtitle } from "./Shared/Components";
 
 export default function App() {
   return (
     <Container>
       <div className="flex flex-wrap gap-x-16 gap-y-4">
         <div className="flex flex-col gap-2">
-          <h2 className="font-bold">Pliages</h2>
+          <Subtitle>Pliages</Subtitle>
           <Link href="masu/">Boîte Masu & diviseurs</Link>
           <Link href="moda-masu/">Boîte Moda Masu</Link>
           <Link href="baggi/">Boîte Baggi</Link>
           <Link href="corolle/">Boîte Corolle</Link>
           <Link href="hexagonal/">Boîte hexagonale (WIP)</Link>
+          <Link href="kata/">Boîte kata (WIP)</Link>
         </div>
         <div className="flex flex-col gap-2">
-          <h2 className="font-bold">Autres ressources</h2>
+          <Subtitle>Autres ressources</Subtitle>
           <Link href="https://www.facebook.com/groups/406940570021633">
             Groupe facebook Les ludistes origamistes
           </Link>

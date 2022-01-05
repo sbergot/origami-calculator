@@ -103,3 +103,7 @@ export function Link({ href, children }: { href: string } & Children) {
     </a>
   );
 }
+
+export function Subtitle({ children }: Children) {
+  return <h2 className="text-lg font-bold">{children}</h2>;
+}

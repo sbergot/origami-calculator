@@ -4,8 +4,9 @@ import {
   MathJaxContainer,
   Result,
   SizeInput,
+  Subtitle,
   YoutubeEmbed,
-} from "../Shared/Layout";
+} from "../Shared/Components";
 import { UseState } from "../Shared/UITypes";
 import modaMasuUrl from "./moda-masu.svg";
 
@@ -139,7 +140,7 @@ function ModaMasuBox({
   const [boxHeight] = heightState;
   return (
     <div>
-      <h2 className="text-lg font-bold">Boîte Moda Masu</h2>
+      <Subtitle>Boîte Moda Masu</Subtitle>
       <SizeInput title="Largeur de la boîte" state={widthState} />
       <SizeInput title="Longueur de la boîte" state={lengthState} />
       <SizeInput title="Hauteur de la boîte" state={heightState} />
@@ -169,7 +170,7 @@ function ModaMasuCover({
   const coverHeight = boxHeight - coverHeightMargin;
   return (
     <div>
-      <h2 className="text-lg font-bold">Couvercle Moda Masu</h2>
+      <Subtitle>Couvercle Moda Masu</Subtitle>
       <SizeInput
         title="Marge couvercle en largeur"
         state={[coverWidthMargin, setWidthMargin]}

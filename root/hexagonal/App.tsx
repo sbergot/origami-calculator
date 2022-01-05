@@ -4,8 +4,9 @@ import {
   Link,
   MathJaxContainer,
   SizeInput,
+  Subtitle,
   YoutubeEmbed,
-} from "../Shared/Layout";
+} from "../Shared/Components";
 import { UseState } from "../Shared/UITypes";
 import hexagonalUrl from "./hexagonal.svg";
 import diagonalUrl from "./diagonal.svg";
@@ -46,7 +47,7 @@ function HexaBox({
   const sheetLength = 2 * height + (diag * Math.sqrt(3)) / 2;
   return (
     <div>
-      <h2 className="text-lg font-bold">Boîte hexagonale</h2>
+      <Subtitle>Boîte hexagonale</Subtitle>
       <SizeInput title="Hauteur" state={heightState} />
       <SizeInput title="Grande diagonale" state={diagState} />
       <div>Longueur de la feuille: {formatResult(sheetLength)}</div>
@@ -72,7 +73,7 @@ function HexaCover({
   const sheetLength = 2 * height + (diag * Math.sqrt(3)) / 2;
   return (
     <div>
-      <h2 className="text-lg font-bold">Couvercle boîte hexagonale</h2>
+      <Subtitle>Couvercle boîte hexagonale</Subtitle>
       <SizeInput
         title="Marge couvercle en hauteur"
         state={[heightMargin, setHeightMargin]}
