@@ -44,14 +44,18 @@ export function YoutubeEmbed({
   return (
     <div className={`w-full ${className}`}>
       <div className="video-responsive">
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/${embedId}`}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        {navigator.onLine ? (
+          <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${embedId}`}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <p>vidéo non disponible hors ligne</p>
+        )}
       </div>
     </div>
   );
@@ -109,4 +113,27 @@ export function Link({ href, children }: { href: string } & Children) {
 
 export function Subtitle({ children }: Children) {
   return <h2 className="text-lg font-bold">{children}</h2>;
+}
+
+export function MarkList({ prefix, marks }: { prefix: string; marks: number[] }) {
+  const cumulatedMarks: number[] = [];
+  let acc = 0;
+  for (const m of marks) {
+    acc += m;
+    cumulatedMarks.push(acc);
+  }
+  return (
+    <div className="grid justify-start gap-2 grid-cols-3fc grid-flow-row sm:grid-rows-3 sm:grid-flow-col">
+      <span></span>
+      <span>écarts</span>
+      <span>cumulés</span>
+      {marks.map((m, i) => (
+        <>
+          <span>{prefix + (i + 1)}</span>
+          <span>{formatResult(m)}</span>
+          <span>{formatResult(cumulatedMarks[i])}</span>
+        </>
+      ))}
+    </div>
+  );
 }

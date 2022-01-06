@@ -18,6 +18,7 @@ export default defineConfig({
         corolle: resolve(__dirname, 'root/corolle/index.html'),
         hexagonal: resolve(__dirname, 'root/hexagonal/index.html'),
         kata: resolve(__dirname, 'root/kata/index.html'),
+        "v-pouch": resolve(__dirname, 'root/v-pouch/index.html'),
       }
     }
   }

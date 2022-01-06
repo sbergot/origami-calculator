@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   formatResult,
   Link,
+  MarkList,
   MathJaxContainer,
   SizeInput,
   Subtitle,
@@ -23,29 +24,6 @@ export default function App() {
         <YoutubeEmbed embedId="QkVtTkP8J7k" className="max-w-4xl" />
       </div>
     </MathJaxContainer>
-  );
-}
-
-function MarkList({ prefix, marks }: { prefix: string; marks: number[] }) {
-  const cumulatedMarks: number[] = [];
-  let acc = 0;
-  for (const m of marks) {
-    acc += m;
-    cumulatedMarks.push(acc);
-  }
-  return (
-    <div className="grid justify-start gap-2 grid-cols-3fc grid-flow-row sm:grid-rows-3 sm:grid-flow-col">
-      <span></span>
-      <span>écarts</span>
-      <span>cumulés</span>
-      {marks.map((m, i) => (
-        <>
-          <span>{prefix + (i + 1)}</span>
-          <span>{formatResult(m)}</span>
-          <span>{formatResult(cumulatedMarks[i])}</span>
-        </>
-      ))}
-    </div>
   );
 }
 

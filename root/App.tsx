@@ -6,12 +6,13 @@ export default function App() {
       <div className="flex flex-wrap gap-x-16 gap-y-4">
         <div className="flex flex-col gap-2">
           <Subtitle>Pliages</Subtitle>
-          <Link href="masu/">Boîte Masu & diviseurs</Link>
+          <Link href="masu/">Boîte & diviseurs Masu</Link>
           <Link href="moda-masu/">Boîte Moda Masu</Link>
           <Link href="baggi/">Boîte Baggi</Link>
           <Link href="corolle/">Boîte Corolle</Link>
           <Link href="hexagonal/">Boîte hexagonale</Link>
-          <Link href="kata/">Boîte kata (WIP)</Link>
+          <Link href="kata/">Boîte & diviseur kata</Link>
+          <Link href="v-pouch/">Pochette en V</Link>
         </div>
         <div className="flex flex-col gap-2">
           <Subtitle>Autres ressources</Subtitle>

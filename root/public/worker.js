@@ -10,6 +10,7 @@ const CACHE_FILES = [
   "/kata/",
   "/masu/",
   "/moda-masu/",
+  "/v-pouch/",
 ];
 
 function getErrorResponse() {
