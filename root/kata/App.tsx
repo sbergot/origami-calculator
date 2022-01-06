@@ -7,8 +7,9 @@ import {
   Subtitle,
   YoutubeEmbed,
 } from "../Shared/Components";
-import { UseState } from "../Shared/UITypes";
+import { UseState, UseStateArray } from "../Shared/UITypes";
 import kataBoxUrl from "./kata-box.svg";
+import kataDivisor1Url from "./kata-divisor1.svg";
 
 export default function App() {
   return (
@@ -18,7 +19,8 @@ export default function App() {
         <div className="w-full max-w-md">
           <img src={kataBoxUrl} />
         </div>
-        <KataDivisor />
+        <KataDivisors />
+        <YoutubeEmbed embedId="QkVtTkP8J7k" className="max-w-4xl" />
       </div>
     </MathJaxContainer>
   );
@@ -81,38 +83,99 @@ function processSectionNumber(i: number): number {
   return Math.max(Math.min(Math.trunc(i), 6), 2);
 }
 
-function KataDivisor() {
+function KataDivisors() {
   const [height, setHeight] = useState(18);
   const [width, setWidth] = useState(45);
   const [sectionNbr, setSectionNbr] = useState(4);
   const [sections, setSections] = useState([35, 20, 20, 35, 0, 0]);
+  return (
+    <>
+      <KataDivisorsInputs
+        height={[height, setHeight]}
+        width={[width, setWidth]}
+        sectionNbr={[sectionNbr, setSectionNbr]}
+        sections={[sections, setSections]}
+      />
+      <KataDivisor1Measurement height={height} width={width} sections={sections.slice(0, sectionNbr)} />
+    </>
+  );
+}
+
+function KataDivisorsInputs({
+  height,
+  width,
+  sectionNbr,
+  sections,
+}: {
+  height: UseState;
+  width: UseState;
+  sectionNbr: UseState;
+  sections: UseStateArray;
+}) {
+  const [sectionNbrValue] = sectionNbr;
+  const [sectionsValue, setSections] = sections;
   function setSectionAt(idx: number, value: number) {
-    const newSections = [...sections];
+    const newSections = [...sectionsValue];
     newSections[idx] = value;
     setSections(newSections);
   }
   return (
     <div>
-      <Subtitle>Diviseur kata 1</Subtitle>
-      <SizeInput title="Hauteur" state={[height, setHeight]} />
-      <SizeInput title="Largeur" state={[width, setWidth]} />
+      <Subtitle>Diviseur kata</Subtitle>
+      <SizeInput title="Hauteur" state={height} />
+      <SizeInput title="Largeur" state={width} />
       <SizeInput
         title="Nombre de sections"
-        state={[sectionNbr, setSectionNbr]}
+        state={sectionNbr}
         process={processSectionNumber}
       />
-      {sections.map((section, idx) => (
+      {sectionsValue.map((section, idx) => (
         <div>
           <p>section {idx}</p>
           <input
             type="number"
             className="border px-2"
             value={section}
-            disabled={idx >= sectionNbr}
+            disabled={idx >= sectionNbrValue}
             onChange={(e) => setSectionAt(idx, parseInt(e.currentTarget.value))}
           />
         </div>
       ))}
+    </div>
+  );
+}
+
+function KataDivisor1Measurement({height,width,sections}: {
+  height: number;
+  width: number;
+  sections: number[];
+}) {
+  const margin = 2;
+  const adjustedHeight = height - margin;
+  const sectionsNbr = sections.length;
+  const sectionsSum = sections.reduce((a,b) => a+b, 0);
+  const lengthMarks = [];
+  for (const section of sections) {
+    lengthMarks.push(section, height, height);
+  }
+  lengthMarks.pop();
+  lengthMarks.pop();
+  return (
+    <div>
+      <div className="mt-2 font-bold">
+        Largeur de la feuille: {formatResult(width + adjustedHeight * 2)}
+      </div>
+      <MarkList
+        prefix="w"
+        marks={[adjustedHeight, width, adjustedHeight]}
+      />
+      <div className="mt-2 font-bold">
+        Longueur de la feuille: {formatResult(sectionsSum + (height * 2 * (sectionsNbr - 1)))}
+      </div>
+      <MarkList prefix="l" marks={lengthMarks} />
+      <div className="w-full max-w-md">
+          <img src={kataDivisor1Url} />
+      </div>
     </div>
   );
 }
