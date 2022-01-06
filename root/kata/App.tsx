@@ -34,7 +34,7 @@ function KataBox() {
   const [margin, setMargin] = useState(1.2);
   return (
     <div>
-      <Subtitle>Boîte kata</Subtitle>
+      <Subtitle>Boîte Katta</Subtitle>
       <SizeInput title="Hauteur" state={[height, setHeight]} />
       <SizeInput title="Largeur" state={[width, setWidth]} />
       <SizeInput title="Longueur" state={[length, setLength]} />
@@ -96,7 +96,7 @@ function KataDivisorsInputs({
   }
   return (
     <div>
-      <Subtitle>Diviseur kata</Subtitle>
+      <Subtitle>Diviseur Katta</Subtitle>
       <Link href="https://www.facebook.com/groups/406940570021633/permalink/698296610886026/">
         Tutorial
       </Link>
@@ -140,7 +140,7 @@ function KataDivisor1Measurement({height,width,sections}: {
   lengthMarks.pop();
   return (
     <div>
-      <Subtitle>Diviseur kata 1</Subtitle>
+      <Subtitle>Diviseur Katta 1</Subtitle>
       <div className="mt-2 font-bold">
         Largeur de la feuille: {formatResult(width + adjustedHeight * 2)}
       </div>

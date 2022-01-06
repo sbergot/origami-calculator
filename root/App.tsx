@@ -11,7 +11,7 @@ export default function App() {
           <Link href="baggi/">Boîte Baggi</Link>
           <Link href="corolle/">Boîte Corolle</Link>
           <Link href="hexagonal/">Boîte hexagonale</Link>
-          <Link href="kata/">Boîte & diviseur kata</Link>
+          <Link href="kata/">Boîte & diviseur Katta</Link>
           <Link href="v-pouch/">Pochette en V</Link>
         </div>
         <div className="flex flex-col gap-2">
