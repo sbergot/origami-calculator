@@ -1,8 +1,16 @@
 "use strict";
 
-const version = "v1::";
-
-const cachename = version + "pages";
+const VERSION = "v1::";
+const CACHE_NAME = VERSION + "pages";
+const CACHE_FILES = [
+  "/",
+  "/baggi/",
+  "/corolle/",
+  "/hexagonale/",
+  "/kata/",
+  "/masu/",
+  "/moda-masu/",
+];
 
 function getErrorResponse() {
   return new Response("<h1>Service Unavailable</h1>", {
@@ -14,69 +22,38 @@ function getErrorResponse() {
   });
 }
 
-function cacheFirstResponse(event) {
-  event.respondWith(
-    caches.match(event.request).then(function (cached) {
-      var networked = fetch(event.request)
-        .then(fetchedFromNetwork, unableToResolve)
-        .catch(unableToResolve);
+// fetch the resource from the network
+const fromNetwork = (request, timeout) =>
+  new Promise((fulfill, reject) => {
+    const timeoutId = setTimeout(reject, timeout);
+    fetch(request).then((response) => {
+      clearTimeout(timeoutId);
+      console.log("from network: " + request.url)
+      fulfill(response);
+      updateCache(request, response);
+    }, reject);
+  });
 
-      return cached || networked;
+// fetch the resource from the browser cache
+const fromCache = (request) =>
+  caches
+    .open(CACHE_NAME)
+    .then((cache) =>
+      cache
+        .match(request)
+        .then((matching) => matching || getErrorResponse())
+    );
 
-      function fetchedFromNetwork(response) {
-        var cacheCopy = response.clone();
+// cache the current page to make it available for offline
+const updateCache = (request, response) =>
+  caches.open(CACHE_NAME).then((cache) => cache.put(request, response));
 
-        caches.open(version + "pages").then(function add(cache) {
-          console.log("updating " + event.request.url);
-          return cache.put(event.request, cacheCopy);
-        });
-
-        return response;
-      }
-
-      function unableToResolve() {
-        return getErrorResponse();
-      }
-    })
+// general strategy when making a request (eg if online try to fetch it
+// from the network with a timeout, if something fails serve from cache)
+self.addEventListener("fetch", (evt) => {
+  evt.respondWith(
+    fromNetwork(evt.request, 3000).catch(() => fromCache(evt.request))
   );
-}
-
-function networkFirstResponse(event) {
-  event.respondWith(
-    caches.match(event.request).then(async function (cached) {
-      var networked = await fetch(event.request)
-        .then(fetchedFromNetwork, unableToResolve)
-        .catch(unableToResolve);
-
-      return networked || cached || getErrorResponse();
-
-      function fetchedFromNetwork(response) {
-        var cacheCopy = response.clone();
-
-        caches.open(version + "pages").then(function add(cache) {
-          console.log("updating " + event.request.url);
-          return cache.put(event.request, cacheCopy);
-        });
-
-        return response;
-      }
-
-      function unableToResolve() {
-        return null;
-      }
-    })
-  );
-}
-
-self.addEventListener("fetch", function (event) {
-  if (event.request.method !== "GET") {
-    return;
-  }
-  if (event.request.destination === "document") {
-    networkFirstResponse(event);
-  } else {
-    cacheFirstResponse(event);
-  }
 });
 
 self.addEventListener("activate", function (event) {
@@ -85,7 +62,7 @@ self.addEventListener("activate", function (event) {
       return Promise.all(
         keys
           .filter(function (key) {
-            return !key.startsWith(version);
+            return !key.startsWith(VERSION);
           })
           .map(function (key) {
             return caches.delete(key);
@@ -94,3 +71,11 @@ self.addEventListener("activate", function (event) {
     })
   );
 });
+
+self.addEventListener("install", (evt) =>
+  evt.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(cacheFiles);
+    })
+  )
+);

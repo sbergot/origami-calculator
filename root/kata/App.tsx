@@ -10,17 +10,16 @@ import {
 import { UseState, UseStateArray } from "../Shared/UITypes";
 import kataBoxUrl from "./kata-box.svg";
 import kataDivisor1Url from "./kata-divisor1.svg";
-import kataDivisor2Url from "./kata-divisor2.svg";
 
 export default function App() {
   return (
     <MathJaxContainer>
       <div className="fluid-container mt-4">
+        <KataDivisors />
         <KataBox />
         <div className="w-full max-w-md">
           <img src={kataBoxUrl} />
         </div>
-        <KataDivisors />
         <YoutubeEmbed embedId="QkVtTkP8J7k" className="max-w-4xl" />
       </div>
     </MathJaxContainer>
@@ -58,9 +57,6 @@ function KataBox() {
   return (
     <div>
       <Subtitle>Boîte kata</Subtitle>
-      <Link href="https://www.facebook.com/groups/406940570021633/permalink/698296610886026/">
-        Tutorial
-      </Link>
       <SizeInput title="Hauteur" state={[height, setHeight]} />
       <SizeInput title="Largeur" state={[width, setWidth]} />
       <SizeInput title="Longueur" state={[length, setLength]} />
@@ -98,7 +94,6 @@ function KataDivisors() {
         sections={[sections, setSections]}
       />
       <KataDivisor1Measurement height={height} width={width} sections={sections.slice(0, sectionNbr)} />
-      <KataDivisor2Measurement height={height} width={width} sections={sections.slice(0, sectionNbr)} />
     </>
   );
 }
@@ -124,6 +119,9 @@ function KataDivisorsInputs({
   return (
     <div>
       <Subtitle>Diviseur kata</Subtitle>
+      <Link href="https://www.facebook.com/groups/406940570021633/permalink/698296610886026/">
+        Tutorial
+      </Link>
       <SizeInput title="Hauteur" state={height} />
       <SizeInput title="Largeur" state={width} />
       <SizeInput
@@ -178,36 +176,6 @@ function KataDivisor1Measurement({height,width,sections}: {
       <MarkList prefix="l" marks={lengthMarks} />
       <div className="w-full max-w-md">
           <img src={kataDivisor1Url} />
-      </div>
-    </div>
-  );
-}
-
-function KataDivisor2Measurement({height,width,sections}: {
-  height: number;
-  width: number;
-  sections: number[];
-}) {
-  const sectionsNbr = sections.length;
-  const sectionsSum = sections.reduce((a,b) => a+b, 0);
-  const lengthMarks = [];
-  for (const section of sections) {
-    lengthMarks.push(section, height, height);
-  }
-  lengthMarks.pop();
-  lengthMarks.pop();
-  return (
-    <div>
-      <Subtitle>Diviseur kata 2</Subtitle>
-      <div className="mt-2 font-bold">
-        Largeur de la feuille: {formatResult(width)}
-      </div>
-      <div className="mt-2 font-bold">
-        Longueur de la feuille: {formatResult(sectionsSum + (height * 2 * (sectionsNbr - 1)))}
-      </div>
-      <MarkList prefix="l" marks={lengthMarks} />
-      <div className="w-full max-w-md">
-          <img src={kataDivisor2Url} />
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ import {
 } from "../Shared/Components";
 import { UseState } from "../Shared/UITypes";
 import baggiUrl from "./baggi.svg";
-import baggiLegendUrl from "./baggi_legend.svg";
 
 const r = String.raw;
 
@@ -28,10 +27,7 @@ export default function App() {
         <div className="w-full max-w-sm">
           <img src={baggiUrl} />
         </div>
-        <div className="w-full max-w-sm">
-          <img src={baggiLegendUrl} />
-        </div>
-        <YoutubeEmbed embedId="ZdtQVv-AxR0" className="max-w-4xl" />
+        <YoutubeEmbed embedId="ZdtQVv-AxR0" className="max-w-md" />
       </div>
     </MathJaxContainer>
   );
