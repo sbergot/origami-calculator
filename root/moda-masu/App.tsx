@@ -171,6 +171,10 @@ function ModaMasuCover({
   return (
     <div>
       <Subtitle>Couvercle Moda Masu</Subtitle>
+      <p className="max-w-sm">
+        Les marges en largeur et en longueur sont positives. La marge en hauteur
+        est compté négativement.
+      </p>
       <SizeInput
         title="Marge couvercle en largeur"
         state={[coverWidthMargin, setWidthMargin]}
