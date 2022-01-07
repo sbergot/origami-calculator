@@ -31,7 +31,7 @@ const fromNetwork = (request, timeout) =>
       clearTimeout(timeoutId);
       console.log("from network: " + request.url)
       fulfill(response);
-      updateCache(request, response);
+      updateCache(request);
     }, reject);
   });
 
@@ -46,8 +46,12 @@ const fromCache = (request) =>
     );
 
 // cache the current page to make it available for offline
-const updateCache = (request, response) =>
-  caches.open(CACHE_NAME).then((cache) => cache.put(request, response));
+const updateCache = request =>
+caches
+  .open(CACHE_NAME)
+  .then(cache =>
+    fetch(request).then(response => cache.put(request, response))
+  );
 
 // general strategy when making a request (eg if online try to fetch it
 // from the network with a timeout, if something fails serve from cache)
@@ -76,7 +80,7 @@ self.addEventListener("activate", function (event) {
 self.addEventListener("install", (evt) =>
   evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(cacheFiles);
+      return cache.addAll(CACHE_FILES);
     })
   )
 );

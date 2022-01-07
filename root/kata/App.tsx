@@ -108,7 +108,7 @@ function KataDivisorsInputs({
         process={processSectionNumber}
       />
       {sectionsValue.map((section, idx) => (
-        <div>
+        <div key={idx}>
           <p>section {idx}</p>
           <input
             type="number"

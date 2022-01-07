@@ -1,5 +1,5 @@
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Children, UseState } from "./UITypes";
 
 import titleUrl from "./title.png";
@@ -128,11 +128,11 @@ export function MarkList({ prefix, marks }: { prefix: string; marks: number[] })
       <span>écarts</span>
       <span>cumulés</span>
       {marks.map((m, i) => (
-        <>
+        <Fragment key={i}>
           <span>{prefix + (i + 1)}</span>
           <span>{formatResult(m)}</span>
           <span>{formatResult(cumulatedMarks[i])}</span>
-        </>
+        </Fragment>
       ))}
     </div>
   );
