@@ -29,7 +29,7 @@ export default function App() {
             Le matériel pour démarrer
           </Link>
           <Link href="https://www.facebook.com/groups/406940570021633/posts/787122218670131/">
-            Gallerie de photo avec des exemples de pliages
+            Galerie de photos avec des exemples de pliages
           </Link>
           <Link href="https://www.corniro.com/">www.corniro.com</Link>
           <Link href="https://github.com/sbergot/origami-calculator">
