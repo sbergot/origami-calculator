@@ -25,9 +25,18 @@ export default function App() {
           <Link href="https://www.youtube.com/channel/UColNj5F2YvcqKY2mvvbus-Q">
             Chaîne youtube Mémo-règles
           </Link>
+          <Link href="https://www.youtube.com/watch?v=xYKxWUL2pWo">
+            Le matériel pour démarrer
+          </Link>
+          <Link href="https://www.facebook.com/groups/406940570021633/posts/787122218670131/">
+            Gallerie de photo avec des exemples de pliages
+          </Link>
           <Link href="https://www.corniro.com/">www.corniro.com</Link>
           <Link href="https://github.com/sbergot/origami-calculator">
             Code source de ce site
+          </Link>
+          <Link href="https://github.com/sbergot/origami-calculator/issues">
+            Signaler un problème
           </Link>
         </div>
       </div>
